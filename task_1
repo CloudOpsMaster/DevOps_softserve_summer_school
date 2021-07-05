@@ -1,15 +1,40 @@
 #!/bin/bash
 
-checkuser ()
-{
-  echo "Function for check user"
-} 
+user=$1
+dir=$2
 
-checkdirectory ()
-{
-  echo "Function for check directory"
+if [ -z $user ] && [ -z $dir ]; then
+     echo "use task_1  user_name directory "
+     exit 1;    
+fi
+
+checkuser () {
+ if id -u $user >/dev/null 2>&1; then
+   echo "User $user exists"
+ else
+   echo "User $user does not exist"
+ fi
 }
-checkuser
-checkdirectory
+ 
 
+checkdirectory () {
+  if test -d $dir 
+  then
+    echo "Directory $dir exists"
+  else 
+    echo "Directory $dir does not exist"
+  fi
+}
+
+# checkuser
+# checkdirectory
+
+chownfunc () {
+  checkuser
+  checkdirectory
+  sudo chown $user $dir
+  find $dir -printf '%u %p\n'
+}
+
+chownfunc
 exit 0
