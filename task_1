@@ -1,0 +1,15 @@
+#!/bin/bash
+
+checkuser ()
+{
+  echo "Function for check user"
+} 
+
+checkdirectory ()
+{
+  echo "Function for check directory"
+}
+checkuser
+checkdirectory
+
+exit 0
