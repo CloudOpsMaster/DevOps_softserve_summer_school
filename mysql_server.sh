@@ -22,7 +22,7 @@ echo "Finished i mysql server "
 echo "Restart mysql"
 sudo service mysql restart
 sudo sleep 3
-sudo service mysql status
+# sudo service mysql status
 
 echo "Seting up mysql .................................................... "
 sudo mysql -u root -p
