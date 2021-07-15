@@ -24,3 +24,4 @@ echo "Finished i mysql server "
 echo "Install net tool ..."
 sudo apt install net-tools
 echo "Finished i net tool"
+ echo ""
