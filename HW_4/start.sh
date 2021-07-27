@@ -8,6 +8,7 @@ echo "Enter 3: terraform plan"
 echo "Enter 4: terraform apply"
 echo "Enter 5: terraform destroy"
 echo "Enter 6: aws ac2 describe-instances"
+echo "Enter 7: terraform console"
 
 read VALUE
 
@@ -48,7 +49,15 @@ case $VALUE in
     echo "Success!"
     ;;
 
+7)
+    echo "Terraform console (file('some_file.sh.tpl') , templatefile('webserver.sh.tpl', { l_name='Tailor', f_name='Vadim', names = ['Ivan', 'Endru']}) ) "
+    terraform console
+    ;;
+
 *)
     echo "Incorect value"
     ;;
 esac
+
+
+

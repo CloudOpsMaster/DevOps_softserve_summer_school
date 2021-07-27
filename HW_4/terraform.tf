@@ -7,7 +7,12 @@ resource "aws_instance" "Ubuntu" {
   ami                    = "ami-090f10efc254eaf55"
   instance_type          = "t3.small"
   vpc_security_group_ids = [aws_security_group.webserver.id]
-  user_data              = file("webserver.sh")
+  user_data = templatefile("webserver.sh.tpl", {
+    t_name = "Vadim",
+    l_name = "Tailor",
+    names = ["Ivan", "Vasia", "Igor"]
+
+  })
 
   tags = {
     Name    = "Amazon apach2"
@@ -41,7 +46,7 @@ resource "aws_security_group" "webserver" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-    ingress {
+  ingress {
     description      = "tcp port 22"
     from_port        = 22
     to_port          = 22
