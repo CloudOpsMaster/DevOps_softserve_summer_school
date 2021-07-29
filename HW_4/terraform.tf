@@ -22,6 +22,11 @@ resource "aws_instance" "Ubuntu" {
 
 }
 
+// adding ssh-key
+  metadata = {
+   ssh-keys = "root:${file("~/.ssh/public_key.pub")}"
+ }
+
 
 resource "aws_security_group" "webserver" {
   name        = "webserver Security Group"
